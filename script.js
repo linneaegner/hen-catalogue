@@ -41,6 +41,16 @@ const hens = [
         breed: "Skånsk blommehöna",
         ringcolor: null,
     },
+    {
+        id: 5,
+        name: "Sky",
+        image: "images/sky.png",
+        birthmonth: 7,
+        birthyear: 2023,
+        gender: "hona",
+        breed: "Skånsk blommehöna",
+        ringcolor: "blå",
+    }
 ]
 
 // FUNKTIONER
@@ -55,7 +65,7 @@ function createHenCard(hen) {
         <p>Födselmånad: ${hen.birthmonth}</p>
         <p>Kön: ${hen.gender}</p>
         <p>Ras: ${hen.breed}</p>
-        <p>Ring: ${hen.ringcolor ? hen.ringcolor : "Ingen"}</p>
+        <p>Ring: ${hen.ringcolor ? hen.ringcolor : "Ingen" }</p>
     </div>`;
     return henCard;
 }
@@ -71,5 +81,11 @@ function displayHens() {
 displayHens();
 
 // MOBILMENY
+const mobileMenuIcon = document.querySelector(".mobile-menu-icon");
+
+mobileMenuIcon.addEventListener("click", () => {
+    let menuList = document.querySelector(".menu-list");
+    menuList.classList.toggle("active");
+});
 
 // FORMULÄR LÄGG TILL HÖNA
