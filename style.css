@@ -15,7 +15,7 @@ header {
     height: 60px;
 }
 
-.container {
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,9 +29,21 @@ main {
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    max-width: 80%;
+}
+
+.hero {
+    width: 100%;
+    background-color: #4da864;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section {
+    width: 80%;
     margin: 0 auto;
-    padding: 40px 0;
 }
 
 footer {
@@ -101,6 +113,17 @@ img {
     padding: 20px;
     border-radius: 8px;
 }
+
+.hen-card.booked-yay {
+    outline: 3px solid #4da864;
+  }
+  .filter-hens-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
 
 @media (min-width: 601px) {
     .hamburger {

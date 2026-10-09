@@ -11,20 +11,20 @@
 
 <body>
     <header>
-        <div class="container">
+        <div class="header-container">
 
 
             <div class="logo">
-                <p>Hjorthagens höns <span>🐔</span></p>
+                <p> <span>🐔🐔🐔🐔🐔</span></p>
             </div>
 
 
             <nav class="nav">
 
                 <ul class="menu">
-                    <li class="menu-item"><a href="#page-title">Hjorthagens höns</a></li>
-                    <li class="menu-item"><a href="#add-hen-container">Lägg till höna</a></li>
-                    <li class="menu-item"><a href="#hen-facts-container">Snabbfakta</a></li>
+                    <li class="menu-item"><a href="#our-hens">Hjorthagens höns</a></li>
+                    <li class="menu-item"><a href="#add-hen">Lägg till höna</a></li>
+                    <li class="menu-item"><a href="#hen-facts">Snabbfakta</a></li>
                 </ul>
             </nav>
 
@@ -40,70 +40,107 @@
 
 
     <main>
-        <h1 id="page-title">Hjorthagens höns</h1>
-        <div id="hens-container"></div>
+        <section class="hero">
+            <h1>Hjorthagens höns</h1>
+            <p>Hjorthagens <span class="count-hens"></span>höns värmer hela Stockholm.</p>
+
+        </section>
 
 
-        <div id="add-hen-container">
-            <h2 id="add-hen-title">Lägg till höna</h2>
-            <form id="add-hen-form">
-                <!--NAMN-->
-                <label for="name">Namn</label>
-                <input type="text" id="name" name="name" required> <br>
-
-                <!-- BILD -->
-                <label for="image">Bild</label>
-                <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" /> <br>
-
-
-                <!-- FÖDSEL DATUM -->
-                <label for="birthdate">Födelse datum</label>
-                <input type="date" id="birthdate" name="birthdate" required>
-
-
-                <!-- KÖN -->
-                <fieldset>
-                    <legend>Kön</legend>
-                    
-                    <label for="gender-hona">Hona</label>
-                    <input type="radio" id="gender-hona" name="gender" value="hona" required>
-                    
-                    <label for="gender-hane">Hane</label>
-                    <input type="radio" id="gender-hane" name="gender" value="hane" required>
-                </fieldset>
+        <section id="our-hens" class="section">
+            <h2 class="section-title">Våra höns</h2>
+            <h3>Vill du boka ett eller flera ägg?</h3>
+            <p>Klicka på knappen under valfri höna för att boka ett eller flera ägg.</p>
+            <div class="filter-hens-container">
+                <h4 class="filter-hens-title">Filtrera höns:</h4>
+                <div class="filter-hens-btns">
+                    <button class="filter-hens-btn all" type="button">Alla höns</button>
+                    <button class="filter-hens-btn hona" type="button">Honor</button>
+                    <button class="filter-hens-btn hane" type="button">Hanar</button>
+                </div>
+            </div>
+            <div id="hens-container"></div>
+            <div id="egg-booking-container">
+            </div>
+        </section>
 
 
-                <!-- RAS -->
-                <label for="breed">Ras</label>
-                <select id="breed" name="breed" required> 
-                    <option value="Skånsk blommehöna">Skånsk blommehöna</option>
-                    <option value="Lohman höns">Lohman höns</option>
-                    <option value="Sussex höns">Sussex höns</option>
-                    <option value="Maran höns">Maran höns</option>
-                    <option value="Brahma höns">Brahma höns</option>
-                    <option value="Silkeshöns">Silkeshöns</option>
-                    <option value="Orpington höns">Orpington höns</option>
-                </select> <br>
+        <section id="add-hen" class="section">
+            <h2 class="section-title">Lägg till höna</h2>
+            <div id="add-hen-container">
+                <form id="add-hen-form">
+                    <!--NAMN-->
+                    <label for="name">Namn</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <!-- BILD -->
+                    <label for="image">Bild</label>
+                    <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" />
 
 
-                <!-- RINGFÄRG -->
-                <label for="ringcolor">Ringfärg</label>
-                <select id="ringcolor" name="ringcolor" required>
-                    <option value="">Ingen ring</option>
-                    <option value="grön">Grön</option>
-                    <option value="gul">Gul</option>
-                    <option value="röd">Röd</option>
-                    <option value="blå">Blå</option>
-                </select> <br>
-
-                <!-- LÄGG TILL HÖNA -->
-                <button type="submit">Lägg till höna</button>
-
-            </form>
-        </div>
+                    <!-- FÖDSEL DATUM -->
+                    <label for="birthdate">Födelse datum</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
 
 
-        <div id="hen-facts-container"></div>
+                    <!-- KÖN -->
+                    <fieldset>
+                        <legend>Kön</legend>
+
+                        <label for="gender-hona">Hona</label>
+                        <input type="radio" id="gender-hona" name="gender" value="hona" required>
+
+                        <label for="gender-hane">Hane</label>
+                        <input type="radio" id="gender-hane" name="gender" value="hane" required>
+                    </fieldset>
+
+
+                    <!-- RAS -->
+                    <label for="breed">Ras</label>
+                    <select id="breed" name="breed" required>
+                        <option value="Skånsk blommehöna">Skånsk blommehöna</option>
+                        <option value="Lohman höns">Lohman höns</option>
+                        <option value="Sussex höns">Sussex höns</option>
+                        <option value="Maran höns">Maran höns</option>
+                        <option value="Brahma höns">Brahma höns</option>
+                        <option value="Silkeshöns">Silkeshöns</option>
+                        <option value="Orpington höns">Orpington höns</option>
+                    </select>
+
+
+                    <!-- RINGFÄRG -->
+                    <label for="ringcolor">Ringfärg</label>
+                    <select id="ringcolor" name="ringcolor" required>
+                        <option value="">Ingen ring</option>
+                        <option value="grön">Grön</option>
+                        <option value="gul">Gul</option>
+                        <option value="röd">Röd</option>
+                        <option value="blå">Blå</option>
+                    </select>
+
+                    <!-- LÄGG TILL HÖNA -->
+                    <button type="submit">Lägg till höna</button>
+
+                </form>
+            </div>
+        </section>
+
+
+
+        <section id="hen-facts" class="section">
+            <h2 class="section-title">Snabbfakta</h2>
+            <div id="hen-facts-container">
+                <p>Hjorthagens höns får inte matas, men om du vill ge dem mat kan du ge följande mat:</p>
+                <ul>
+                    <li>Grönsaker</li>
+                    <li>Frukter</li>
+                    <li>Insekter</li>
+                    <li>Valfri mat</li>
+                </ul>
+            </div>
+        </section>
+
+
     </main>
     <footer>
         <p>Copyright &copy; 2026 Hjorthagens höns</p>
