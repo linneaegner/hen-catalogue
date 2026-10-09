@@ -4,19 +4,16 @@ const hens = [
         id: 1,
         name: "Ispluttis",
         image: "images/ispluttis.png",
-        birthmonth: 7,
-        birthyear: 2023,
+        birthdate: "2023-07-01",
         gender: "hona",
         breed: "Skånsk blommehöna",
-        hasring: true,
         ringcolor: "grön",
     },
     {
         id: 2,
         name: "HannaLottaElise",
         image: "images/hannalottaelise.png",
-        birthmonth: 7,
-        birthyear: 2023,
+        birthdate: "2023-07-01",
         gender: "hona",
         breed: "Skånsk blommehöna",
         ringcolor: "gul",
@@ -25,8 +22,7 @@ const hens = [
         id: 3,
         name: "Red",
         image: "images/red.png",
-        birthmonth: 7,
-        birthyear: 2023,
+        birthdate: "2023-07-01",
         gender: "hona",
         breed: "Skånsk blommehöna",
         ringcolor: "röd",
@@ -35,8 +31,7 @@ const hens = [
         id: 4,
         name: "Zimzalabim",
         image: "images/zimzalabim.png",
-        birthmonth: 7,
-        birthyear: 2023,
+        birthdate: "2023-07-01",
         gender: "hona",
         breed: "Skånsk blommehöna",
         ringcolor: null,
@@ -45,8 +40,7 @@ const hens = [
         id: 5,
         name: "Sky",
         image: "images/sky.png",
-        birthmonth: 7,
-        birthyear: 2023,
+        birthdate: "2023-07-01",
         gender: "hona",
         breed: "Skånsk blommehöna",
         ringcolor: "blå",
@@ -54,38 +48,69 @@ const hens = [
 ]
 
 // FUNKTIONER
+
 function createHenCard(hen) {
     const henCard = document.createElement("div");
     henCard.classList.add("hen-card");
     henCard.innerHTML = `
-    <img src="${hen.image}" alt="${hen.name}">
-    <div class="hen-info">
-        <h3>${hen.name}</h3>
-        <p>Födelseår: ${hen.birthyear}</p>
-        <p>Födselmånad: ${hen.birthmonth}</p>
-        <p>Kön: ${hen.gender}</p>
-        <p>Ras: ${hen.breed}</p>
-        <p>Ring: ${hen.ringcolor ? hen.ringcolor : "Ingen" }</p>
-    </div>`;
+<img src="${hen.image}" alt="${hen.name}">
+<div class="hen-info">
+    <h3>${hen.name}</h3>
+    <p>${hen.name} är en ${hen.gender} av rasen ${hen.breed} och föddes ${hen.birthdate}. Denna höna har ${hen.ringcolor ? `en ${hen.ringcolor}` : "ingen"} ring.</p>
+</div>`;
     return henCard;
 }
 
 function displayHens() {
     const hensContainer = document.querySelector("#hens-container");
+    hensContainer.innerHTML = "";
+
     hens.forEach(hen => {
         hensContainer.appendChild(createHenCard(hen));
     });
 }
 
+
 // HÖNSKORT
 displayHens();
 
-// MOBILMENY
-const mobileMenuIcon = document.querySelector(".mobile-menu-icon");
 
-mobileMenuIcon.addEventListener("click", () => {
-    let menuList = document.querySelector(".menu-list");
-    menuList.classList.toggle("active");
+// MOBILMENY
+const hamburger = document.querySelector(".hamburger");
+
+hamburger.addEventListener("click", () => {
+    let menu = document.querySelector(".nav");
+    menu.classList.toggle("active");
 });
 
-// FORMULÄR LÄGG TILL HÖNA
+// FORMULÄR
+const addHenForm = document.querySelector("#add-hen-form");
+
+addHenForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(addHenForm);
+    const object = Object.fromEntries(formData);
+    
+    let imageUrl = "images/missing-image.png";
+    if (object.image.size > 0) {
+        imageUrl = URL.createObjectURL(object.image);
+    } 
+
+    const hen = {
+        id: hens.length + 1,
+        name: object.name,
+        image: imageUrl,
+        birthdate: object.birthdate,
+        gender: object.gender,
+        breed: object.breed,
+        ringcolor: object.ringcolor || null,
+    };
+
+    console.log(hen);
+
+    hens.push(hen);
+    displayHens();
+    addHenForm.reset();
+});
+
+
