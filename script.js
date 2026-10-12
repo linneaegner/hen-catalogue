@@ -138,7 +138,7 @@ function displayHens(hensToShow = hens) {
 function countHenCards() {
     const countHensText = document.querySelector(".count-hens");
     const countHens = document.querySelectorAll(".hen-card");
-    console.log(countHens);
+    // console.log(countHens);
     countHensText.textContent = `${countHens.length} `;
 }
 
@@ -206,7 +206,9 @@ const addHenForm = document.querySelector("#add-hen-form");
 addHenForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(addHenForm);
+    // console.log(formData);
     const object = Object.fromEntries(formData);
+    // console.log(object);
 
     let imageUrl = "images/missing-image.png";
     if (object.image.size > 0) {
@@ -223,7 +225,7 @@ addHenForm.addEventListener("submit", (event) => {
         ringcolor: object.ringcolor || null,
     };
 
-    console.log(hen);
+    // console.log(hen);
 
     hens.push(hen);
     displayHens();
