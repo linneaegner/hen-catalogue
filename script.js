@@ -57,23 +57,23 @@ function createHenCard(hen) {
     henCard.classList.add("hen-card");
     henCard.innerHTML = `
     <button type="button" class="byebye-hen-btn">X</button>
-      <img src="${hen.image}" alt="${hen.name}">
+      <img class="hen-img" src="${hen.image}" alt="${hen.name}">
       <div class="hen-info">
         <h3>${hen.name}</h3>
         <p>${hen.name} är en ${hen.gender} av rasen ${hen.breed} och föddes ${hen.birthdate}. Denna höna har ${hen.ringcolor ? `en ${hen.ringcolor}` : "ingen"} ring.</p>
         <button type="button" class="book-egg-btn">Boka ett ägg</button>
-        <button type="button" class="remove-egg-booking-btn">Ta bort bokning</button>
+        <button type="button" class="unbook-egg-btn">Ta bort bokning</button>
       </div>`;
 
     const bookBtn = henCard.querySelector(".book-egg-btn");
-    const removeBtn = henCard.querySelector(".remove-egg-booking-btn");
+    const unbookBtn = henCard.querySelector(".unbook-egg-btn");
     const byebyeBtn = henCard.querySelector(".byebye-hen-btn");
     bookBtn.addEventListener("click", () => {
         bookEgg(hen, henCard);
     });
 
-    removeBtn.addEventListener("click", () => {
-        removeEggBooking(hen);
+    unbookBtn.addEventListener("click", () => {
+        unbookEgg(hen);
     });
 
     byebyeBtn.addEventListener("click", () => {
@@ -97,7 +97,7 @@ function bookEgg(hen, henCard) {
     }, 400);
 }
 
-function removeEggBooking(hen) {
+function unbookEgg(hen) {
     const existingBookingForThisHen = eggBookings.find(
         booking => booking.henId === hen.id
     );
@@ -178,8 +178,16 @@ displayHens();
 const hamburger = document.querySelector(".hamburger");
 
 hamburger.addEventListener("click", () => {
+    console.log("hamburger clicked");
     let menu = document.querySelector(".nav");
+    console.dir(menu);
+    let hamburgerImg = document.querySelector(".hamburger-img");
     menu.classList.toggle("active");
+    if (menu.classList.contains("active")) {
+        hamburgerImg.src = "images/menu-close.png";
+    } else {
+        hamburgerImg.src = "images/menu-open.png";
+    }
 });
 
 // FILTERA HÖNS

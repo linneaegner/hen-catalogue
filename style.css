@@ -2,16 +2,26 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    overflow-x: hidden;
 }
 
 header {
-    background-color: #94a6e6;
-    position: relative;
+    background-color: #e9a5110f;
+    position: absolute;
+    width: 100%;
     height: 60px;
+}
+
+.logo {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #d7d7d7;
+    font-weight: bold;
 }
 
 .header-container {
@@ -22,68 +32,124 @@ header {
     height: 100%;
 }
 
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #e9a511;
+    padding: 20px 0;
+}
+
+nav {
+    display: none;
+}
+
+.nav.active {
+    /* transform: translate(0, 0); */
+    display: block;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #281c03
+}
+
+.hamburger {
+    z-index: 2;
+    padding: 8px;
+}
+
+.hamburger-img {
+    width: 24px;
+    height: 24px;
+}
+
 main {
     display: flex;
     background-color: #f0eeeb;
     flex-direction: column;
-    gap: 20px;
+    gap: 60px;
+    padding-bottom: 60px;
 }
 
 .hero {
-    height: 600px;
-    color: rgb(20, 16, 80);
-    text-align: center;
-    padding: 200px 10%;
-    background-image: 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:
         linear-gradient(rgba(9, 8, 27, 0.6), rgba(9, 8, 27, 0.6)),
         url('images/perfectkaos-hero-bg.jpg');
-    background-size:cover;
+    background-size: cover;
     background-position: center;
 }
 
 .hero-content {
-    background-color: #f3f6ff;
-    padding: 10px;
-    border: 1px solid #94a6e6;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 4px;
+    text-align: center;
 }
+
 .hero h1 {
-    font-size: 2.5rem;
     text-transform: uppercase;
+    color: #e9a511;
 }
 
 .hero p {
     font-size: 1.25rem;
+    color: #e9a511;
+    max-width: 320px;
 }
 
 .section {
-    width: 80%;
+    width: 80%; /*80 eller 90%? vad ser bäst ut i mobil?*/
     margin: 0 auto;
-    background-color: rgb(116, 164, 206);
+    /* background-color: rgb(116, 164, 206); */
+    padding: 20px;
+    color: #5c4007
 }
+
+.section-title {
+    /* fix styling*/
+} 
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 60px;
-    text-align: center;
-    padding: 10px;
-    background-color: #94a6e6;
+    background-color: #32173a;
+    color: #e9a511;
 }
 
-img {
-    width: 90%;
-    max-height: 240px;
-    border-radius: 8px;
-    /* If you want an image to scale down if it has to,
-    but never scale up to be larger than its original size, 
-    add the following:
-    max-width: 100%;
-    height: auto; */
+.filter-hens-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 #hens-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
+    /* background-color: #5c4007; */
 }
 
 .hen-card {
@@ -94,57 +160,49 @@ img {
     border-radius: 8px;
 }
 
-.hamburger {
-    display: block;
+.hen-card.booked-yay {
+    outline: 3px solid #4da864;
 }
 
-.nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    transition: 500ms;
-    transform: translate(100%, 0);
-    background-color: #6980d5;
+.byebye-hen-btn {
+    /* fix styling*/
+} 
+
+.hen-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    /* If you want an image to scale down if it has to,
+    but never scale up to be larger than its original size, 
+    add the following:
+    max-width: 100%;
+    height: auto; */
 }
 
-.nav.active {
-    transform: translate(0, 0);
-}
+.hen-info {
+    /* fix styling*/
+} 
 
-.menu {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0;
-    align-items: center;
-}
+.hen-info button {
+    /* fix styling*/
+} 
 
-.menu a {
-    text-decoration: none;
-    color: #000000;
-}
+.book-egg-btn {
+    /* fix styling*/
+} 
+
+.unbook-egg-btn {
+    /* fix styling*/
+} 
 
 #add-hen-form {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 12px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
 }
-
-.hen-card.booked-yay {
-    outline: 3px solid #4da864;
-  }
-  .filter-hens-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-  }
 
 @media (min-width: 601px) {
     .hamburger {
