@@ -71,12 +71,6 @@ nav {
 
 .hamburger {
     z-index: 2;
-    padding: 8px;
-}
-
-.hamburger-img {
-    width: 24px;
-    height: 24px;
 }
 
 main {
@@ -155,29 +149,33 @@ footer {
 .hen-card {
     text-align: center;
     /* border: 1px solid #ccc; */
-    padding: 8px;
+    padding: 32px 16px;
     background-color: rgb(255, 255, 255);
     border-radius: 8px;
+    position: relative;
+}
+.byebye-hen-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
 }
 
 .hen-card.booked-yay {
     outline: 3px solid #4da864;
 }
 
-.byebye-hen-btn {
-    /* fix styling*/
-} 
-
 .hen-img {
     max-width: 100%;
-    height: auto;
+    height: auto; 
     border-radius: 50%;
+    border: 4px solid #e9a511;
     /* If you want an image to scale down if it has to,
     but never scale up to be larger than its original size, 
     add the following:
     max-width: 100%;
     height: auto; */
 }
+
 
 .hen-info {
     /* fix styling*/
@@ -202,6 +200,29 @@ footer {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
+}
+
+.touch-icon-btn {
+    /* 
+    - Absolute accessibility floor: 24 × 24 CSS pixels (WCAG 2.2, Success Criterion 2.5.8, Level AA).
+    -Safe practical minimum: 44 × 44 CSS pixels (Apple Human Interface Guidelines, WCAG 2.5.5 Level AAA).
+    -Recommended default: 48 × 48 CSS pixels (Google / Material Design, web.dev).
+    -Minimum gap between two targets: 8 px, ideally 12 to 16 px for dense interfaces.
+    */
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.touch-icon {
+    width: 24px;
+    height: 24px;
+    
 }
 
 @media (min-width: 601px) {

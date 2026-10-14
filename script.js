@@ -56,7 +56,7 @@ function createHenCard(hen) {
 
     henCard.classList.add("hen-card");
     henCard.innerHTML = `
-    <button type="button" class="byebye-hen-btn">X</button>
+    <button type="button" class="byebye-hen-btn touch-icon-btn"><img class="touch-icon" src="images/byebye.png" alt="remove hen from list"></button>
       <img class="hen-img" src="${hen.image}" alt="${hen.name}">
       <div class="hen-info">
         <h3>${hen.name}</h3>
