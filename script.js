@@ -57,12 +57,15 @@ function createHenCard(hen) {
     henCard.classList.add("hen-card");
     henCard.innerHTML = `
     <button type="button" class="byebye-hen-btn touch-icon-btn"><img class="touch-icon" src="images/byebye.png" alt="remove hen from list"></button>
-      <img class="hen-img" src="${hen.image}" alt="${hen.name}">
+      
       <div class="hen-info">
+        <img class="hen-img" src="${hen.image}" alt="${hen.name}">
         <h3>${hen.name}</h3>
         <p>${hen.name} är en ${hen.gender} av rasen ${hen.breed} och föddes ${hen.birthdate}. Denna höna har ${hen.ringcolor ? `en ${hen.ringcolor}` : "ingen"} ring.</p>
-        <button type="button" class="book-egg-btn">Boka ett ägg</button>
-        <button type="button" class="unbook-egg-btn">Ta bort bokning</button>
+        <div class="egg-buttons">
+            <button type="button" class="book-egg-btn">Boka ett ägg</button>
+            <button type="button" class="unbook-egg-btn">Ta bort bokning</button>
+        </div>
       </div>`;
 
     const bookBtn = henCard.querySelector(".book-egg-btn");
@@ -195,7 +198,13 @@ const filterHensBtns = document.querySelectorAll(".filter-hens-btn");
 
 filterHensBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-        filterHens(btn.classList[1]);
+        const filter = btn.dataset.filter;
+        console.log(filter);
+        
+        filterHens(filter);
+
+        filterHensBtns.forEach(btn => btn.classList.remove("active"));
+        btn.classList.add("active");
     });
 });
 

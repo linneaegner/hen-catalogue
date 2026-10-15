@@ -1,3 +1,13 @@
+:root {
+    --shadow-normal:
+    0 4px 8px rgba(92, 64, 7, 0.18),
+    0 6px 20px rgba(92, 64, 7, 0.12);
+  --shadow-hover:
+    0 8px 16px rgba(92, 64, 7, 0.22),
+    0 10px 28px rgba(92, 64, 7, 0.14);
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -8,6 +18,28 @@ html {
 
 body {
     margin: 0;
+}
+
+.touch-icon-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.touch-icon {
+    width: 24px;
+    height: 24px;
+
+}
+
+button {
+    font-family: "Fira Sans", sans-serif;
+    cursor: pointer;
 }
 
 header {
@@ -22,6 +54,7 @@ header {
     text-decoration: none;
     color: #d7d7d7;
     font-weight: bold;
+    font-family: "Caveat", serif;
 }
 
 .header-container {
@@ -33,21 +66,17 @@ header {
 }
 
 .nav {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
     background-color: #e9a511;
     padding: 20px 0;
-}
-
-nav {
-    display: none;
+    z-index: 1;
 }
 
 .nav.active {
-    /* transform: translate(0, 0); */
     display: block;
 }
 
@@ -87,15 +116,15 @@ main {
     justify-content: center;
     align-items: center;
     background-image:
-        linear-gradient(rgba(9, 8, 27, 0.6), rgba(9, 8, 27, 0.6)),
+        /* linear-gradient(rgba(9, 8, 27, 0.6), rgba(9, 8, 27, 0.6)), */
         url('images/perfectkaos-hero-bg.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .hero-content {
-    padding: 16px;
-    border-radius: 4px;
+    /* padding: 16px; */
+    /* border-radius: 4px; */
     text-align: center;
 }
 
@@ -111,16 +140,27 @@ main {
 }
 
 .section {
-    width: 80%; /*80 eller 90%? vad ser bäst ut i mobil?*/
+    width: 80%;
     margin: 0 auto;
-    /* background-color: rgb(116, 164, 206); */
     padding: 20px;
-    color: #5c4007
+    color: #5c4007;
+
 }
 
 .section-title {
-    /* fix styling*/
-} 
+    font-size: 2rem;
+    color: #3d2a05;
+}
+
+.egg-bookings-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #4c389b;
+}
+
+.egg-bookings-link:hover {
+    color: #3d2a05;
+}
 
 footer {
     display: flex;
@@ -133,97 +173,144 @@ footer {
 
 .filter-hens-container {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-hens-title {
+    font-size: 1.25rem;
+    color: #3d2a05;
+    margin: 0;
+}
+
+.filter-hens-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-hens-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #faf8ff;
+    color: #1e075c;
+}
+
+.filter-hens-btn:hover {
+    background-color: #4e3c7f;
+    color: #ffffff;
+}
+
+.filter-hens-btn.active {
+    border: 1px solid #4e3c7f;
 }
 
 #hens-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
-    /* background-color: #5c4007; */
+    gap: 32px;
 }
 
 .hen-card {
-    text-align: center;
-    /* border: 1px solid #ccc; */
-    padding: 32px 16px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 8px;
+    background-color: #fffdf8;
+    border-radius: 4px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    height: 100%;
+    box-shadow: var(--shadow-normal);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.hen-card:hover {
+    transform: rotate(-1deg) translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
 .byebye-hen-btn {
     position: absolute;
     top: 8px;
     right: 8px;
+    background-color: #b0a8e5;
+    border-radius: 50%;
+    box-shadow: var(--shadow-normal);
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.byebye-hen-btn:hover {
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.2);
 }
 
 .hen-card.booked-yay {
-    outline: 3px solid #4da864;
+    outline: 3px solid #b0a8e5;
+}
+
+.hen-info {
+    font-family: "Caveat", serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
 }
 
 .hen-img {
-    max-width: 100%;
-    height: auto; 
-    border-radius: 50%;
-    border: 4px solid #e9a511;
-    /* If you want an image to scale down if it has to,
-    but never scale up to be larger than its original size, 
-    add the following:
-    max-width: 100%;
-    height: auto; */
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
+.hen-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3d2a05;
+    margin: 0;
+}
 
-.hen-info {
-    /* fix styling*/
-} 
+.hen-info p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-top: 0;
+}
 
 .hen-info button {
-    /* fix styling*/
-} 
+    padding: 8px 12px;
+    border: 1px solid #e9a511;
+    background-color: rgb(255, 255, 255);
+    color: #5c4007;
+    cursor: url('images/chicken.png'), pointer;
+}
 
-.book-egg-btn {
-    /* fix styling*/
-} 
+.hen-info button:hover {
+    background-color: #e9a511;
+}
 
-.unbook-egg-btn {
-    /* fix styling*/
-} 
+.egg-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 
 #add-hen-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: #ffffff;
+    background-color: #fffdf8;
     padding: 20px;
     border-radius: 8px;
 }
 
-.touch-icon-btn {
-    /* 
-    - Absolute accessibility floor: 24 × 24 CSS pixels (WCAG 2.2, Success Criterion 2.5.8, Level AA).
-    -Safe practical minimum: 44 × 44 CSS pixels (Apple Human Interface Guidelines, WCAG 2.5.5 Level AAA).
-    -Recommended default: 48 × 48 CSS pixels (Google / Material Design, web.dev).
-    -Minimum gap between two targets: 8 px, ideally 12 to 16 px for dense interfaces.
-    */
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    background: transparent;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.touch-icon {
-    width: 24px;
-    height: 24px;
-    
-}
+
 
 @media (min-width: 601px) {
     .hamburger {
@@ -231,8 +318,8 @@ footer {
     }
 
     .nav {
+        display: block;
         position: static;
-        transform: none;
         width: auto;
         background-color: transparent;
     }
@@ -240,6 +327,16 @@ footer {
     .menu {
         flex-direction: row;
         gap: 20px;
+    }
+
+    .menu a {
+        color: #d7d7d7;
+        font-family: "Fira Sans", sans-serif;
+    }
+
+    .filter-hens-container {
+        flex-direction: row;
+        justify-content: center;
     }
 
     #hens-container {
