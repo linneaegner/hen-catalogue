@@ -56,11 +56,11 @@ function createHenCard(hen) {
 
     henCard.classList.add("hen-card");
     henCard.innerHTML = `
-    <button type="button" class="byebye-hen-btn touch-icon-btn"><img class="touch-icon" src="images/byebye.png" alt="remove hen from list"></button>
+    <button type="button" class="byebye-hen-btn touch-icon-btn"><img class="touch-icon" src="images/byebye.png" alt="Ta bort ${hen.name}"></button>
       
       <div class="hen-info">
-        <img class="hen-img" src="${hen.image}" alt="${hen.name}">
-        <h3>${hen.name}</h3>
+        <img class="hen-img" src="${hen.image}" alt="Bild av ${hen.name}">
+        <h4>${hen.name}</h4>
         <p>${hen.name} är en ${hen.gender} av rasen ${hen.breed} och föddes ${hen.birthdate}. Denna höna har ${hen.ringcolor ? `en ${hen.ringcolor}` : "ingen"} ring.</p>
         <div class="egg-buttons">
             <button type="button" class="book-egg-btn">Boka ett ägg</button>
@@ -118,7 +118,7 @@ function unbookEgg(hen) {
 function byebyeHen(hen) {
     hens = hens.filter(deadHen => deadHen.id !== hen.id);
     eggBookings = eggBookings.filter(booking => booking.henId !== hen.id);
-    displayHens();
+    filterHens(activeGenderFilter);
     displayEggBookings();
 }
 
@@ -181,7 +181,7 @@ displayHens();
 const hamburger = document.querySelector(".hamburger");
 
 hamburger.addEventListener("click", () => {
-    console.log("hamburger clicked");
+    // console.log("hamburger clicked");
     let menu = document.querySelector(".nav");
     console.dir(menu);
     let hamburgerImg = document.querySelector(".hamburger-img");
@@ -194,17 +194,19 @@ hamburger.addEventListener("click", () => {
 });
 
 // FILTERA HÖNS
-const filterHensBtns = document.querySelectorAll(".filter-hens-btn");
+const filterBtns = document.querySelectorAll(".filter-hens-btn");
+let activeGenderFilter = "all";
 
-filterHensBtns.forEach(btn => {
+filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-        const filter = btn.dataset.filter;
-        console.log(filter);
-        
-        filterHens(filter);
+        if (activeGenderFilter === btn.dataset.filter) return;
+        const previousFilterBtn = document.querySelector(`.filter-hens-btn.active`);
 
-        filterHensBtns.forEach(btn => btn.classList.remove("active"));
+        previousFilterBtn.classList.remove("active");
         btn.classList.add("active");
+
+        activeGenderFilter = btn.dataset.filter;
+        filterHens(activeGenderFilter);
     });
 });
 
@@ -245,7 +247,7 @@ addHenForm.addEventListener("submit", (event) => {
     // console.log(hen);
 
     hens.push(hen);
-    displayHens();
+    filterHens(activeGenderFilter);
     addHenForm.reset();
 });
 

@@ -55,24 +55,24 @@
 
         <section id="our-hens" class="section">
             <h2 class="section-title">Våra höns</h2>
-            <p>Här ser du alla höns på gården.</p>
+            <p>Här ser du våra fina fina höns på gården.</p>
             <p>
                 Boka eller avboka ägg med knapparna under varje höna.
                 <a href="#egg-bookings" class="egg-bookings-link"> Se dina bokningar här &rarr;</a>
             </p>
 
             <div class="filter-hens-container">
-                <h4 class="filter-hens-title">Filtrera höns:</h4>
+                <h3 class="filter-hens-title">Filtrera höns:</h3>
                 <div class="filter-hens-btns">
-                    <button class="filter-hens-btn active" type="button" data-filter="all">Alla</button>
-                    <button class="filter-hens-btn" type="button" data-filter="hona">Honor</button>
+                    <button class="filter-hens-btn active" type="button" data-filter="all">Alla höns</button>
+                    <button class="filter-hens-btn" type="button" data-filter="hona">Honer</button>
                     <button class="filter-hens-btn" type="button" data-filter="hane">Hanar</button>
                 </div>
             </div>
 
             <div id="hens-container"></div>
 
-            <h4 id="egg-bookings">Dina bokningar</h4>
+            <h2 id="egg-bookings">Dina bokningar</h2>
             <div id="egg-booking-container">
             </div>
         </section>
@@ -80,56 +80,56 @@
 
         <section id="add-hen" class="section">
             <h2 class="section-title">Lägg till höna</h2>
-                <form id="add-hen-form">
+            <form id="add-hen-form">
 
-                    <label for="name">Namn</label>
-                    <input type="text" id="name" name="name" required>
-
-
-                    <label for="image">Bild</label>
-                    <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" />
+                <label for="name">Namn</label>
+                <input type="text" id="name" name="name" required>
 
 
-                    <label for="birthdate">Födelse datum</label>
-                    <input type="date" id="birthdate" name="birthdate" required>
+                <label for="image">Bild</label>
+                <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" />
 
 
-                    <fieldset>
-                        <legend>Kön</legend>
-
-                        <label for="gender-hona">Hona</label>
-                        <input type="radio" id="gender-hona" name="gender" value="hona" required>
-
-                        <label for="gender-hane">Hane</label>
-                        <input type="radio" id="gender-hane" name="gender" value="hane" required>
-                    </fieldset>
+                <label for="birthdate">Födelse datum</label>
+                <input type="date" id="birthdate" name="birthdate" required>
 
 
-                    <label for="breed">Ras</label>
-                    <select id="breed" name="breed" required>
-                        <option value="Skånsk blommehöna">Skånsk blommehöna</option>
-                        <option value="Lohman höns">Lohman höns</option>
-                        <option value="Sussex höns">Sussex höns</option>
-                        <option value="Maran höns">Maran höns</option>
-                        <option value="Brahma höns">Brahma höns</option>
-                        <option value="Silkeshöns">Silkeshöns</option>
-                        <option value="Orpington höns">Orpington höns</option>
-                    </select>
+                <fieldset>
+                    <legend>Kön</legend>
+
+                    <label for="gender-hona">Hona</label>
+                    <input type="radio" id="gender-hona" name="gender" value="hona" required>
+
+                    <label for="gender-hane">Hane</label>
+                    <input type="radio" id="gender-hane" name="gender" value="hane" required>
+                </fieldset>
 
 
-                    <label for="ringcolor">Ringfärg</label>
-                    <select id="ringcolor" name="ringcolor" required>
-                        <option value="">Ingen ring</option>
-                        <option value="grön">Grön</option>
-                        <option value="gul">Gul</option>
-                        <option value="röd">Röd</option>
-                        <option value="blå">Blå</option>
-                    </select>
+                <label for="breed">Ras</label>
+                <select id="breed" name="breed" required>
+                    <option value="Skånsk blommehöna">Skånsk blommehöna</option>
+                    <option value="Lohman höns">Lohman höns</option>
+                    <option value="Sussex höns">Sussex höns</option>
+                    <option value="Maran höns">Maran höns</option>
+                    <option value="Brahma höns">Brahma höns</option>
+                    <option value="Silkeshöns">Silkeshöns</option>
+                    <option value="Orpington höns">Orpington höns</option>
+                </select>
 
-                    <button type="submit">Lägg till höna</button>
 
-                </form>
-        
+                <label for="ringcolor">Ringfärg</label>
+                <select id="ringcolor" name="ringcolor" required>
+                    <option value="">Ingen ring</option>
+                    <option value="grön">Grön</option>
+                    <option value="gul">Gul</option>
+                    <option value="röd">Röd</option>
+                    <option value="blå">Blå</option>
+                </select>
+
+                <button type="submit">Lägg till höna</button>
+
+            </form>
+
         </section>
 
 
@@ -143,6 +143,14 @@
                     <li>Frukter</li>
                     <li>Insekter</li>
                     <li>Valfri mat</li>
+                    <li>Ris</li>
+                    <li>lax</li>
+                    <li>fisk</li>
+                    <li>skaldjur</li>
+                    <li>insekt</li>
+                    <li>frukt</li>
+                    <li>grönsak</li>
+                    <li>ris</li>
                 </ul>
             </div>
         </section>
