@@ -250,4 +250,4 @@ addHenForm.addEventListener("submit", (event) => {
 
 
 // START
-filterHens(activeGenderFilter);
+renderHens(hens);
