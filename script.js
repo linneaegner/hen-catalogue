@@ -50,8 +50,23 @@ let hens = [
 let eggBookings = [];
 
 // FUNKTIONER
+function renderHens(hens) {
+    const hensContainer = document.querySelector("#hens-container");
 
-function createHenCard(hen) {
+    if (hens.length === 0) {
+        hensContainer.innerHTML = "<p>Inga höns att visa</p>";
+        countHens();
+        return;
+    }
+
+    hensContainer.innerHTML = "";
+    hens.forEach(hen => {
+        hensContainer.appendChild(createCard(hen));
+    });
+    countHens();
+}
+
+function createCard(hen) {
     const henCard = document.createElement("div");
 
     henCard.classList.add("hen-card");
@@ -71,6 +86,7 @@ function createHenCard(hen) {
     const bookBtn = henCard.querySelector(".book-egg-btn");
     const unbookBtn = henCard.querySelector(".unbook-egg-btn");
     const byebyeBtn = henCard.querySelector(".byebye-hen-btn");
+
     bookBtn.addEventListener("click", () => {
         bookEgg(hen, henCard);
     });
@@ -82,6 +98,7 @@ function createHenCard(hen) {
     byebyeBtn.addEventListener("click", () => {
         byebyeHen(hen);
     });
+
     return henCard;
 }
 
@@ -122,29 +139,6 @@ function byebyeHen(hen) {
     displayEggBookings();
 }
 
-function displayHens(hensToShow = hens) {
-    const hensContainer = document.querySelector("#hens-container");
-
-    if (hensToShow.length === 0) {
-        hensContainer.innerHTML = "<p>Inga höns att visa</p>";
-        countHenCards();
-        return;
-    }
-
-    hensContainer.innerHTML = "";
-    hensToShow.forEach(hen => {
-        hensContainer.appendChild(createHenCard(hen));
-    });
-    countHenCards();
-}
-
-function countHenCards() {
-    const countHensText = document.querySelector(".count-hens");
-    const countHens = document.querySelectorAll(".hen-card");
-    // console.log(countHens);
-    countHensText.textContent = `${countHens.length} `;
-}
-
 function displayEggBookings() {
     const eggBookingcontainer = document.querySelector("#egg-booking-container");
 
@@ -174,8 +168,10 @@ function displayEggBookings() {
     bookingTotal.textContent = `Totalt: ${total} ägg`;
 }
 
-// START
-displayHens();
+function countHens() {
+    const countHensText = document.querySelector(".count-hens");
+    countHensText.textContent = `${hens.length} `;
+}
 
 // MOBILMENY
 const hamburger = document.querySelector(".hamburger");
@@ -200,9 +196,10 @@ let activeGenderFilter = "all";
 filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         if (activeGenderFilter === btn.dataset.filter) return;
+        
         const previousFilterBtn = document.querySelector(`.filter-hens-btn.active`);
-
         previousFilterBtn.classList.remove("active");
+
         btn.classList.add("active");
 
         activeGenderFilter = btn.dataset.filter;
@@ -212,10 +209,10 @@ filterBtns.forEach(btn => {
 
 function filterHens(gender) {
     if (gender === "all") {
-        displayHens(hens);
+        renderHens(hens);
     } else {
         const filteredHens = hens.filter(hen => hen.gender === gender);
-        displayHens(filteredHens);
+        renderHens(filteredHens);
     }
 }
 
@@ -252,3 +249,5 @@ addHenForm.addEventListener("submit", (event) => {
 });
 
 
+// START
+filterHens(activeGenderFilter);
