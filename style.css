@@ -300,6 +300,25 @@ footer {
     color: #3d2a05;
 }
 
+#egg-booking-list {
+    padding-left: 0;
+}
+
+#egg-booking-list li {
+    list-style: none;
+}
+
+#egg-booking-list li::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-image: url('images/egg.png');
+    background-size: cover;
+}
+
+
 
 #add-hen-form {
     display: flex;
