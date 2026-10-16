@@ -48,6 +48,7 @@ let hens = [
 ]
 
 let eggBookings = [];
+let activeGenderFilter = "all";
 
 // FUNKTIONER
 function renderHens(hens) {
@@ -103,13 +104,13 @@ function createCard(hen) {
 }
 
 function bookEgg(hen, henCard) {
-    const existingBookingForThisHen = eggBookings.find(booking => booking.henId === hen.id);
-    if (existingBookingForThisHen) {
-        existingBookingForThisHen.eggs += 1;
+    const existingBooking = eggBookings.find(booking => booking.henId === hen.id);
+    if (existingBooking) {
+        existingBooking.eggs += 1;
     } else {
         eggBookings.push({ henId: hen.id, name: hen.name, eggs: 1 });
     }
-    displayEggBookings();
+    renderEggBookings();
 
     henCard.classList.add("booked-yay");
     setTimeout(() => {
@@ -118,28 +119,37 @@ function bookEgg(hen, henCard) {
 }
 
 function unbookEgg(hen) {
-    const existingBookingForThisHen = eggBookings.find(
+    const existingBooking = eggBookings.find(
         booking => booking.henId === hen.id
     );
-    if (existingBookingForThisHen) {
-        existingBookingForThisHen.eggs -= 1;
-        if (existingBookingForThisHen.eggs === 0) {
+    if (existingBooking) {
+        existingBooking.eggs -= 1;
+        if (existingBooking.eggs === 0) {
             eggBookings = eggBookings.filter(
                 booking => booking.henId !== hen.id
             );
         }
     }
-    displayEggBookings();
+    renderEggBookings();
 }
 
 function byebyeHen(hen) {
     hens = hens.filter(deadHen => deadHen.id !== hen.id);
     eggBookings = eggBookings.filter(booking => booking.henId !== hen.id);
     filterHens(activeGenderFilter);
-    displayEggBookings();
+    renderEggBookings();
 }
 
-function displayEggBookings() {
+function filterHens(gender) {
+    if (gender === "all") {
+        renderHens(hens);
+    } else {
+        const filteredHens = hens.filter(hen => hen.gender === gender);
+        renderHens(filteredHens);
+    }
+}
+
+function renderEggBookings() {
     const eggBookingcontainer = document.querySelector("#egg-booking-container");
 
     if (eggBookings.length === 0) {
@@ -173,13 +183,12 @@ function countHens() {
     countHensText.textContent = `${hens.length} `;
 }
 
-// MOBILMENY
+// EVENT LISTENERS
+// mobilmeny
 const hamburger = document.querySelector(".hamburger");
 
 hamburger.addEventListener("click", () => {
-    // console.log("hamburger clicked");
     let menu = document.querySelector(".nav");
-    console.dir(menu);
     let hamburgerImg = document.querySelector(".hamburger-img");
     menu.classList.toggle("active");
     if (menu.classList.contains("active")) {
@@ -189,9 +198,8 @@ hamburger.addEventListener("click", () => {
     }
 });
 
-// FILTERA HÖNS
+// filtera höns
 const filterBtns = document.querySelectorAll(".filter-hens-btn");
-let activeGenderFilter = "all";
 
 filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -207,24 +215,13 @@ filterBtns.forEach(btn => {
     });
 });
 
-function filterHens(gender) {
-    if (gender === "all") {
-        renderHens(hens);
-    } else {
-        const filteredHens = hens.filter(hen => hen.gender === gender);
-        renderHens(filteredHens);
-    }
-}
-
-// FORMULÄR
+// formulär
 const addHenForm = document.querySelector("#add-hen-form");
 
 addHenForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(addHenForm);
-    // console.log(formData);
     const object = Object.fromEntries(formData);
-    // console.log(object);
 
     let imageUrl = "images/missing-image.png";
     if (object.image.size > 0) {
@@ -240,8 +237,6 @@ addHenForm.addEventListener("submit", (event) => {
         breed: object.breed,
         ringcolor: object.ringcolor || null,
     };
-
-    // console.log(hen);
 
     hens.push(hen);
     filterHens(activeGenderFilter);
