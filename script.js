@@ -134,7 +134,7 @@ function unbookEgg(hen) {
 }
 
 function byebyeHen(hen) {
-    hens = hens.filter(deadHen => deadHen.id !== hen.id);
+    hens = hens.filter(existingHen => existingHen.id !== hen.id);
     eggBookings = eggBookings.filter(booking => booking.henId !== hen.id);
     filterHens(activeGenderFilter);
     renderEggBookings();
